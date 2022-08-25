@@ -5,26 +5,24 @@ public class TempConverter {
         
         //variable declarations
         Scanner input = new Scanner(System.in);
-        int fahrenheit = 0;
+        double fahrenheit = 0;
+        double celcius = 0;
+        double kelvin = 0;
+
 
         //ask for input
         System.out.println("please enter a value in fahrenheit to be converted to kelvin");
         
         //get input
-        fahrenheit = input.nextInt();
+        fahrenheit = input.nextDouble();
 
-        //print result of function
-        System.out.println("your value in Kelvin is " + fahrenheitToKelvin(fahrenheit));
-
-    }
-    public static float fahrenheitToKelvin(int val){
-
-        //return the conversion of farenheit to Kelvin
-        return (float)((val-32) * 5.0/9 + 273.15);
-    }
-    public static float kelvinToFahrenheit (int val){
+        celcius = (fahrenheit -32) * 5.0/9;   
         
-        //return the conversion of kelvin to fhrenheit
-        return (float)((val-273.15) * 9.0/5 + 32);
+        kelvin = (fahrenheit - 32) * 5.0/9 + 273.15;
+
+        //print result of calculations
+        System.out.println("your value in Kelvin is " + kelvin);
+        System.out.println("your value in celcius " + celcius);
     }
+    
 }
