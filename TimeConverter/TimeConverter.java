@@ -6,25 +6,17 @@ public class TimeConverter {
         //variable declarations
         Scanner input = new Scanner(System.in);
         int seconds = 0;
+        int minutes = 0;
+        int hours = 0;
+        int days = 0;
+        int years = 0;
+
 
         //ask for input
         System.out.println("Input a amount of time in seconds");
 
         //get input
         seconds = input.nextInt();
-
-        //call function
-        printTimeConversion(seconds);
-        
-    }
-    public static void printTimeConversion(int seconds){
-
-        //variable declaration
-        int minutes = 0;
-        int hours = 0;
-        int days = 0;
-        int years = 0;
-
 
         //convert seconds to minutes and find remainder
         minutes = seconds/60;
@@ -41,9 +33,10 @@ public class TimeConverter {
         //convert days to years and find remainder
         years = days/365;
         days %= 365;
+
         
         //print out the time in terms of years, days, hours, minutes, and secondss
         System.out.println("years: " + years + " days: " + days + " hours " + hours + " minutes: " + minutes + " seconds " + seconds);
-
     }
+    
 }
