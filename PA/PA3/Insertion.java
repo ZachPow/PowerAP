@@ -1,7 +1,7 @@
 public class Insertion {
     public static void main(String args[]){
         
-        int[] arr = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        int[] arr = new int[10];
         int swapIndex = 0;
         int element = 0;
 

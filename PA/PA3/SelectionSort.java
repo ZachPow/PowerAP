@@ -8,6 +8,8 @@ public class SelectionSort {
         for(int i = 0; i < arr.length; i++){
             arr[i] = (int)(Math.random()*100);
         }
+        
+        final long startTime = System.currentTimeMillis();
 
         for(int i = 0; i < arr.length; i++){
             
@@ -15,29 +17,36 @@ public class SelectionSort {
             minIndex = i;
 
             //look for minimum
-            for(int j = i; j < arr.length-1; j++){
+            for(int j = i; j < arr.length; j++){
                 if(arr[minIndex] > arr[j]){
                     minIndex = j;
                 }
             }
 
-            //swap minimum and i
+            //swap minimumIndex and arr[i]
             temp = arr[i];
             arr[i] = arr[minIndex];
             arr[minIndex] = temp;
 
             //print array
+
+            //sorted portion
             for(int k = 0; k <= i; k++){
                 System.out.print(arr[k] + " ");
             }
             
             System.out.print(" | ");
 
+            //not sorted portion
             for(int k = i+1; k < arr.length; k++){
                 System.out.print(arr[k] + " ");
             }
             System.out.println();
 
         }
+
+        final long endTime = System.currentTimeMillis();
+
+        System.out.println("Total execution time: " + (endTime - startTime) + " miliseconds");
     }
 }
