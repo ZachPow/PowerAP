@@ -1,5 +1,9 @@
 
 
+
+
+//If you're reading this and have not read the README in this folder you should go do that
+
 public class test{
     public static void main(String args[]){
         
@@ -25,7 +29,7 @@ public class test{
           into a integer so it can be stored in an index of our 
           integer array. We are also initilizing each element but
           also printing out each element with a space as we initialize
-          it. 
+          it. Go read the README in this folder. 
         */
         for(int i = 0; i < arr.length; i++){
             arr[i] = (int)(Math.random()*100);
