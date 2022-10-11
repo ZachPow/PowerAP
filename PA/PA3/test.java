@@ -1,4 +1,6 @@
-public class Insertion{
+
+
+public class test{
     public static void main(String args[]){
         
         //new integer array of size ten which will contain values which we will sort
