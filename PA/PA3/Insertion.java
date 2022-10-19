@@ -1,13 +1,15 @@
 public class Insertion {
     public static void main(String args[]){
         
-        int[] arr = new int[10];
+        int[] arr = new int[100000 ];
         int swapIndex = 0;
         int element = 0;
 
         for(int i = 0; i < arr.length; i++){
             arr[i] = (int)(Math.random()*100);
         }
+
+        final long startTime = System.currentTimeMillis();
 
         for(int i = 0; i < arr.length; i++){
             
@@ -34,7 +36,7 @@ public class Insertion {
             arr[swapIndex] = element;
 
 
-            //print array
+           /* //print array
             for(int k = 0; k <= i; k++){
                 System.out.print(arr[k] + " ");
             }
@@ -44,7 +46,11 @@ public class Insertion {
             for(int k = i+1; k < arr.length; k++){
                 System.out.print(arr[k] + " ");
             }
-            System.out.println();
+            System.out.println();*/
         }
+
+        final long endTime = System.currentTimeMillis();
+
+        System.out.println("Total execution time: " + (endTime - startTime) + " miliseconds");
     }
 }

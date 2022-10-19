@@ -1,7 +1,7 @@
 public class SelectionSort {
     public static void main(String args[]){
 
-        int[] arr = new int[10];
+        int[] arr = new int[100000];
         int minIndex = 0;
         int temp = 0;
 
@@ -31,7 +31,7 @@ public class SelectionSort {
             //print array
 
             //sorted portion
-            for(int k = 0; k <= i; k++){
+            /*for(int k = 0; k <= i; k++){
                 System.out.print(arr[k] + " ");
             }
             
@@ -41,12 +41,13 @@ public class SelectionSort {
             for(int k = i+1; k < arr.length; k++){
                 System.out.print(arr[k] + " ");
             }
-            System.out.println();
+            System.out.println();*/
 
         }
 
         final long endTime = System.currentTimeMillis();
 
         System.out.println("Total execution time: " + (endTime - startTime) + " miliseconds");
+
     }
 }
