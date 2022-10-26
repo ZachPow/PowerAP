@@ -3,8 +3,9 @@ import java.util.Scanner;
 public class Search {
     public static void main(String args[]){
         
+        
         //variable declaration
-        int[] arr = new int[10000];
+        int[] arr = new int[20];
         int comparisons = 0;
         int target = 0;
         int index = -1;
@@ -16,7 +17,7 @@ public class Search {
 
         //asign each index to random value
         for(int i = 0; i < arr.length; i++){
-            arr[i] = (int)(Math.random()*2000);
+            arr[i] = (int)(Math.random()*10);
             
         }
 
@@ -26,7 +27,7 @@ public class Search {
 
         //sort array
         selectionSort(arr);
-
+        printArray(arr);
         
         System.out.println('\n' + "Target: " + target + '\n');
 
