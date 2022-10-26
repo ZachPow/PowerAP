@@ -39,6 +39,8 @@ public class Calculator {
             }else{
                 System.out.println(val1 + " is not divisable by" + val2);
             }
+        }else if(op == '^'){
+            System.out.println(val1 + " " + op + " " + val2 + " = " + pow(val1, val2));
         }
 
     }
@@ -57,5 +59,13 @@ public class Calculator {
     }
     public static int remainder(int a, int b){
         return a % b;
+    }
+    public static int pow(int a, int b){
+        int total = 1;
+
+        for(int i = 0; i < b; i++){
+            total *= a;
+        }
+        return total;
     }
 }
