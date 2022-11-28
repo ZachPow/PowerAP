@@ -35,9 +35,15 @@ public class PA4 {
 
         Player player = new Player(health, armor, magicArmor, attributePoints); 
     
-        player.setActionState(getAttackStatusInput());
 
-        System.out.println(player);
+        while(player.getHealth() > 0 && oponent.getHealth() > 0){
+            System.out.println("1. Print Action List");
+            System.out.println("2. Enter action");
+
+            temp = getNumberInput();
+        }
+        
+
     }
 
     //gets input and checks if input is valid
@@ -50,14 +56,15 @@ public class PA4 {
 
         str = input.nextLine();
 
+
         //str.toLower because all attack status are lower case
         //user can input with caps and it will still work
-        while(!Player.validActionState(str.toLowerCase())){
-            str = input.nextLine();
+        while(!Player.validActionState(str.toLowerCase())){  
             System.out.println("bad input");
+            str = input.nextLine();
         }
 
-        input.close();
+        //input.close();
         return str.toLowerCase();
     }
     //gets input from user
