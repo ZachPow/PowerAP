@@ -9,7 +9,6 @@ public class PA4 {
         int magicArmor = 0;
         int temp;
 
-        Scanner input = new Scanner(System.in);
         Player oponent = new Player(attributePoints);
 
 
@@ -36,21 +35,30 @@ public class PA4 {
 
         Player player = new Player(health, armor, magicArmor, attributePoints); 
     
-        System.out.println("Player: " + player);
-        System.out.println("Oponent: " + oponent);
+        player.setActionState(getAttackStatusInput());
+
+        System.out.println(player);
     }
+
+    //gets input and checks if input is valid
     public static String getAttackStatusInput(){
         
         Scanner input = new Scanner(System.in);
         String str = new String();
 
-        str = input.next();
+        System.out.println("please enter an action");
 
-        while(!Player.validAttackState(str)){
-            str = input.next();
+        str = input.nextLine();
+
+        //str.toLower because all attack status are lower case
+        //user can input with caps and it will still work
+        while(!Player.validActionState(str.toLowerCase())){
+            str = input.nextLine();
+            System.out.println("bad input");
         }
 
-        return str;
+        input.close();
+        return str.toLowerCase();
     }
     //gets input from user
     public static int getNumberInput(int attributePoints){
@@ -68,12 +76,12 @@ public class PA4 {
             val = input.next();
         }
 
+        //input.close();
+
         //returns the string parsed to an integer
         return Integer.parseInt(val);
     }
-
-    //check that our input is valid
-    public static boolean validInput(String s, int attributePoints){
+    public static boolean validNumber(String s){
         int temp;
 
         //attempt to parse input
@@ -86,6 +94,17 @@ public class PA4 {
 
             //System.out.println(e.getStackTrace());
             return false;
+        }
+        return true;
+    }
+    //check that our input is valid
+    public static boolean validInput(String s, int attributePoints){
+        int temp;
+
+        if(!validNumber(s)){
+            return false;
+        }else{
+            temp = Integer.parseInt(s);
         }
 
         //return false if input is bigger than attribute points

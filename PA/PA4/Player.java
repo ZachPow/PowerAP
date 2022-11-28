@@ -5,7 +5,7 @@ public class Player{
     private int armor;
     private int magicArmor;
     private int attributePoints;
-    private String attackState;
+    private String actionState;
 
     //constructor used for player
     public Player(int healthIn, int armorIn, int magicArmorIn, int pointsIn){
@@ -13,7 +13,7 @@ public class Player{
         armor = armorIn;
         magicArmor = magicArmorIn;
         attributePoints = pointsIn;
-        attackState = "none";
+        actionState = "none";
     }
 
     //constructor used for computer
@@ -49,6 +49,7 @@ public class Player{
         temp += " Armor: " + armor;
         temp += " Magic Armor: " + magicArmor;
         temp += " Attribute points: " + attributePoints;
+        temp += " Attack Status: " + actionState;
 
         return temp;
     }
@@ -56,8 +57,8 @@ public class Player{
     public int getHealth(){
         return health;
     }
-    public void setAttackState(String s){
-        attackState = s;
+    public void setActionState(String s){
+        actionState = s;
     }
     public int getArmor(){
         return armor;
@@ -73,47 +74,72 @@ public class Player{
         health -= value;
     }
 
+    //generates a random attack state
+    //used to generate oponents actionState
+    public void generateactionState(){
+        int temp = (int)(Math.random()*4);
+
+        switch(temp){
+            case 0:
+                actionState = "attack";
+                break;
+            case 1:
+                actionState = "heal";
+                break;
+            case 2:
+                actionState = "defend";
+                break;
+            case 3:
+                actionState = "spell";
+                break;
+            default:
+                System.out.println("generateAttack doesn't work");
+                break;
+        }
+
+    }
+
     public static void attackRound(Player player, Player oponent){
 
-        //switch statement to evaluate players attackState
-        switch(player.attackState){
+        //switch statement to evaluate players actionState
+        switch(player.actionState){
             case "heal":  player.addHealth(1);
                           break;
 
-            case "spell": if(oponent.attackState.equals("defend"))
+            case "spell": if(oponent.actionState.equals("defend"))
                             oponent.subHealth(1);
-                          else if(oponent.attackState.equals("heal"))
+                          else if(oponent.actionState.equals("heal"))
                             oponent.subHealth(2);
                           break;
 
-            case "attack": if(oponent.attackState.equals("spell"))
+            case "attack": if(oponent.actionState.equals("spell"))
                                 oponent.subHealth(1);
-                           else if(oponent.attackState.equals("heal"))
+                           else if(oponent.actionState.equals("heal"))
                                 oponent.subHealth(2);
                            break;
         }
 
         //switch statement to evaluate oponents attackStatus
-        switch(oponent.attackState){
+        switch(oponent.actionState){
             case "heal":  oponent.addHealth(1);
                           break;
 
-            case "spell": if(player.attackState.equals("defend"))
+            case "spell": if(player.actionState.equals("defend"))
                             player.subHealth(1);
-                          else if(player.attackState.equals("heal"))
+                          else if(player.actionState.equals("heal"))
                             player.subHealth(2);
                           break;
 
-            case "attack": if(player.attackState.equals("spell"))
+            case "attack": if(player.actionState.equals("spell"))
                                 player.subHealth(1);
-                           else if(player.attackState.equals("heal"))
+                           else if(player.actionState.equals("heal"))
                                 player.subHealth(2);
                            break;
         }
 
     }
 
-    public static boolean validAttackState(String attackStatus){
+    public static boolean validActionState(String attackStatus){
         
         if(attackStatus.equals("attack") 
                 || attackStatus.equals("defend")
