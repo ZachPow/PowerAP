@@ -39,17 +39,20 @@ public class Player{
             }
             attributePoints--;
         }
+        attackStatus = "none";
     }
     
     public String toString(){
 
         String temp = new String();
 
+        temp += "\n";
         temp += "Health: " + health;
         temp += " Armor: " + armor;
         temp += " Magic Armor: " + magicArmor;
         temp += " Attribute points: " + attributePoints;
         temp += " Attack Status: " + actionState;
+        temp += "\n";
 
         return temp;
     }
@@ -74,7 +77,25 @@ public class Player{
         health -= value;
     }
 
-    //generates a random attack state
+    //generate d20 roll
+    public static int getRoll(){
+        return (int)((Math.random()*20)+1);
+    }
+
+    //takes armor and damage as args
+    //rolls a d20 against armor stat (tie goes to defense)
+    public static boolean rollToAttack(int armor, int damage, Player player){
+        int roll = getRoll();
+
+        if(roll > armor){
+            player.subHealth(damage);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //generates a random action state
     //used to generate oponents actionState
     public void generateactionState(){
         int temp = (int)(Math.random()*4);
@@ -99,6 +120,12 @@ public class Player{
 
     }
 
+    public void printActionList(){
+        System.out.println();
+        System.out.println("Actions: ");
+        System.out.println("Heal, Spell, Attack, Defend \n");
+    }
+
     public static void attackRound(Player player, Player oponent){
 
         //switch statement to evaluate players actionState
@@ -107,15 +134,21 @@ public class Player{
                           break;
 
             case "spell": if(oponent.actionState.equals("defend"))
-                            oponent.subHealth(1);
+                                if(!rollToAttack(oponent.magicArmor, 1, oponent))
+                                    System.out.println("attack failed to hit oponent");
+                                
                           else if(oponent.actionState.equals("heal"))
-                            oponent.subHealth(2);
+                                if(!rollToAttack(oponent.magicArmor, 3, oponent))
+                                    System.out.println("attack failed to hit oponent");
                           break;
 
             case "attack": if(oponent.actionState.equals("spell"))
-                                oponent.subHealth(1);
+                                if(!rollToAttack(oponent.armor, 1, oponent))
+                                    System.out.println("attack failed to hit oponent");
+
                            else if(oponent.actionState.equals("heal"))
-                                oponent.subHealth(2);
+                                if(!rollToAttack(oponent.armor, 3, oponent))
+                                    System.out.println("attack failed to hit oponent");
                            break;
         }
 
@@ -125,15 +158,22 @@ public class Player{
                           break;
 
             case "spell": if(player.actionState.equals("defend"))
-                            player.subHealth(1);
+                              if(!rollToAttack(player.magicArmor, 1, player))
+                                  System.out.println("attack failed to hit player");
+
                           else if(player.actionState.equals("heal"))
-                            player.subHealth(2);
+                              if(!rollToAttack(player.magicArmor, 3, player))
+                                  System.out.println("attack failed to hit player");
+
                           break;
 
             case "attack": if(player.actionState.equals("spell"))
-                                player.subHealth(1);
+                                if(!rollToAttack(player.armor, 3, player))
+                                    System.out.println("attack failed to hit player");
+
                            else if(player.actionState.equals("heal"))
-                                player.subHealth(2);
+                                if(!rollToAttack(player.armor, 3, player))
+                                    System.out.println("attack failed to hit player");
                            break;
         }
 
