@@ -12,21 +12,21 @@ public class PA4 {
         Player oponent = new Player(attributePoints);
 
 
-        System.out.println("\n" + "Stat Points: " + attributePoints);
+        System.out.println("Stat Points: " + attributePoints);
         System.out.println("How many points would you like to put into Health");
 
         temp = getNumberInput(attributePoints);
         health += temp;
         attributePoints -= temp;
 
-        System.out.println("\n" + "Stat Points: " + attributePoints);
+        System.out.println("Stat Points: " + attributePoints);
         System.out.println("How many points would you like to put into armor");
 
         temp = getNumberInput(attributePoints);
         armor += temp;
         attributePoints -= temp;
 
-        System.out.println("\n" + "Stat Points: " + attributePoints);
+        System.out.println("Stat Points: " + attributePoints);
         System.out.println("How many points would you like to put into magic armor");
 
         temp = getNumberInput(attributePoints);
@@ -35,9 +35,15 @@ public class PA4 {
 
         Player player = new Player(health, armor, magicArmor, attributePoints); 
     
-        player.setActionState(getAttackStatusInput());
 
-        while(player.getH)
+        while(player.getHealth() > 0 && oponent.getHealth() > 0){
+            System.out.println("1. Print Action List");
+            System.out.println("2. Enter action");
+
+            temp = getNumberInput();
+        }
+        
+
     }
 
     //gets input and checks if input is valid
@@ -50,14 +56,15 @@ public class PA4 {
 
         str = input.nextLine();
 
+
         //str.toLower because all attack status are lower case
         //user can input with caps and it will still work
-        while(!Player.validActionState(str.toLowerCase())){
-            System.out.println("bad input please enter an action");
+        while(!Player.validActionState(str.toLowerCase())){  
+            System.out.println("bad input");
             str = input.nextLine();
         }
 
-        input.close();
+        //input.close();
         return str.toLowerCase();
     }
     //gets input from user
@@ -81,8 +88,6 @@ public class PA4 {
         //returns the string parsed to an integer
         return Integer.parseInt(val);
     }
-
-    //check if string s is a valid number by checking if it can be parsed
     public static boolean validNumber(String s){
         int temp;
 
