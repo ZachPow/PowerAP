@@ -1,3 +1,4 @@
+import javax.lang.model.util.ElementScanner14;
 
 public class Player{
     
@@ -39,7 +40,7 @@ public class Player{
             }
             attributePoints--;
         }
-        attackStatus = "none";
+        actionState = "none";
     }
     
     public String toString(){
@@ -136,19 +137,29 @@ public class Player{
             case "spell": if(oponent.actionState.equals("defend"))
                                 if(!rollToAttack(oponent.magicArmor, 1, oponent))
                                     System.out.println("attack failed to hit oponent");
+                                else 
+                                    System.out.println("did damage to oponent");
+
                                 
                           else if(oponent.actionState.equals("heal"))
                                 if(!rollToAttack(oponent.magicArmor, 3, oponent))
                                     System.out.println("attack failed to hit oponent");
+                                else 
+                                    System.out.println("did damage to oponent");
+
                           break;
 
             case "attack": if(oponent.actionState.equals("spell"))
                                 if(!rollToAttack(oponent.armor, 1, oponent))
                                     System.out.println("attack failed to hit oponent");
+                                else 
+                                    System.out.println("did damage to oponent");
 
                            else if(oponent.actionState.equals("heal"))
                                 if(!rollToAttack(oponent.armor, 3, oponent))
                                     System.out.println("attack failed to hit oponent");
+                                else 
+                                System.out.println("did damage to oponent");
                            break;
         }
 
@@ -160,20 +171,28 @@ public class Player{
             case "spell": if(player.actionState.equals("defend"))
                               if(!rollToAttack(player.magicArmor, 1, player))
                                   System.out.println("attack failed to hit player");
+                              else 
+                                  System.out.println("did damage to player");
 
                           else if(player.actionState.equals("heal"))
                               if(!rollToAttack(player.magicArmor, 3, player))
                                   System.out.println("attack failed to hit player");
+                              else 
+                                  System.out.println("did damage to player");
 
                           break;
 
             case "attack": if(player.actionState.equals("spell"))
                                 if(!rollToAttack(player.armor, 3, player))
                                     System.out.println("attack failed to hit player");
+                                else 
+                                    System.out.println("did damage to player");
 
                            else if(player.actionState.equals("heal"))
                                 if(!rollToAttack(player.armor, 3, player))
                                     System.out.println("attack failed to hit player");
+                                else
+                                    System.out.println("did damage to player");
                            break;
         }
 
