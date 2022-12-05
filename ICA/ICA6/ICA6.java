@@ -1,7 +1,7 @@
 public class ICA6{
     public static void main(String args[]){
 
-        int[][] arr = new int[5][5];
+        int[][] arr = new int[10][10];
 
         arr[0][0] = 1;
 
@@ -16,12 +16,13 @@ public class ICA6{
                 }
 
                 System.out.print(arr[row][column] + " ");
+                //System.out.format("%-4d", arr[row][column]);
             }
             System.out.println();
         }
 
 
-
+        
     }
     public static boolean boundCheck(int row, int column){
         if(row >= 0 && column >= 0){
