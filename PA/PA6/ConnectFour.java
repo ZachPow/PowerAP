@@ -12,8 +12,6 @@ public class ConnectFour{
 
         while(game){
             
-
-
             board.printBoard();
 
             temp = input.nextInt();
@@ -26,7 +24,7 @@ public class ConnectFour{
 
             }else{
 
-                if(board.placeToken(temp, 1)){
+                if(board.placeToken(temp, 2)){
                     game = false;
                 }
             }
